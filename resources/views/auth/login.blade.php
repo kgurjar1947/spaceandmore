@@ -73,7 +73,7 @@
                                             </div>
                                             @error('password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                                         </div><br>
-                                       <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LdfEPcpAAAAAOP5NbJv9ZK10DcW0QRiodWLorF5"></div>
+                                       <div class="g-recaptcha" id="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                         @error('g-recaptcha-response')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                         @enderror

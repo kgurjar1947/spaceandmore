@@ -40,7 +40,7 @@
                                         
                                 </div>
                                 <span class="text-danger" id="en_messageErrorMsg"></span>
-                                <div class="g-recaptcha" data-sitekey="6LcYwIMpAAAAAFz57MAZJW_B0FRbe8nzY5BbJMup"></div>
+                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

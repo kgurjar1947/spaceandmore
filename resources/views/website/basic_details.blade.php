@@ -235,7 +235,7 @@
                                         <div class="form-group">
                                             <textarea name="message" placeholder="Message"></textarea>
                                         </div>
-                                        <div class="g-recaptcha" data-sitekey="6LdBPHQoAAAAADC1BypJMMtYKTYt8M10GUflGePH"></div>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
       <br/>
 
                                         <div class="form-group message-btn">

@@ -92,7 +92,7 @@
                                             <textarea name="message" id="message" placeholder="Message"></textarea>
                                             <span class="text-danger" id="messageErrorMsg"></span>
                                         </div><span style="color:red">*</span>
-                                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LcYwIMpAAAAAFz57MAZJW_B0FRbe8nzY5BbJMup"></div>
+                                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
                                             <button class="theme-btn btn-one" id="submit"  name="submit" type="submit">Send Message</button>
                                         </div>

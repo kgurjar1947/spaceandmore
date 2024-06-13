@@ -57,7 +57,7 @@
                                             <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email" autocomplete="off" name="email">
                                             @error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                                         </div>
-                                        <div class="g-recaptcha" data-sitekey="6LcYwIMpAAAAAFz57MAZJW_B0FRbe8nzY5BbJMup"></div>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                     </div>
                                     <div class="d-flex">
                                         <label class="d-block mb-0" for="chk-ani">

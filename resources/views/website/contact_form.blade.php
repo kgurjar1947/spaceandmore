@@ -25,7 +25,7 @@ Thank You For Property Enquiry! A representative will get back to you within 24 
                                             <textarea name="message" id="message" placeholder="Message"></textarea>
                                         </div>
                                         <span class="text-danger" id="messageErrorMsg"></span>
-                                        <div class="g-recaptcha" data-sitekey="6LcYwIMpAAAAAFz57MAZJW_B0FRbe8nzY5BbJMup"></div>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                         <br/>
                                         <div class="form-group message-btn">
                                             <input type="submit"  id="submitting_1" class="theme-btn btn-one" value="Submit">

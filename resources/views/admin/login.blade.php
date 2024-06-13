@@ -77,7 +77,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="g-recaptcha" data-sitekey="6LdBPHQoAAAAADC1BypJMMtYKTYt8M10GUflGePH"></div>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                         <div class="important-note">
                                             password should be a minimum of 8 characters and should contains letters and numbers
                                         </div>
