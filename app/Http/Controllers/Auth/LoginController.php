@@ -49,7 +49,7 @@ class LoginController extends Controller
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required',
+            // 'g-recaptcha-response' => 'required',
         ]);
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'], 'active' => 1))){
             $id = Session::put('id', auth()->user()->id);

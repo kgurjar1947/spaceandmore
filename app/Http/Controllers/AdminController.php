@@ -875,7 +875,7 @@ public function delete_sub_restore(Request $request,$id){
         $propertym->keyavailable = $request->keyavailable;
         $propertym->suitablefor = implode(',', $request->suitablefor);
         $propertym->landmark_gps = $request->landmark_gps;
-        $propertym->commercialsubtype = $request->commercialsubtype;
+        $propertym->subcategoryid = $request->commercialsubtype;
         $propertym->commercialfurinished = $request->commercialfurinished;
         $propertym->othercommunity = $request->othercommunity;
         $propertym->building_name = $request->building_name;
@@ -1120,7 +1120,7 @@ public function editnewproperty(Request $request){
         $propertym->keyavailable = $request->keyavailable;
         $propertym->suitablefor = implode(',', $request->suitablefor);
         $propertym->landmark_gps  = $request->landmark_gps ;
-        $propertym->residentialsubtype = $request->residentialsubtype;
+        $propertym->subcategoryid = $request->residentialsubtype;
         $propertym->residentialfurinished = $request->residentialfurinished;
         $propertym->othercommunity = $request->othercommunity;
         $propertym->communitydetails = $request->communitydetails;
@@ -1551,6 +1551,7 @@ public function editbasicproperty(Request $request){
         return view('admin/approve',compact('prodata'));
     }
     
+
      public function update_property(Request $request,$id, $cat){
         if($cat == 1){
             $prodata = PropertyModel::where('id', $id)->first();
@@ -1654,7 +1655,7 @@ public function editbasicproperty(Request $request){
     }
 
 
-function getNextPropertyNumber($length)
+function getNextPropertyNumber($length = 3)
 {
     $number = '';
     do {
@@ -1667,7 +1668,7 @@ function getNextPropertyNumber($length)
 }
 
 
-function getNextCommercialNumber($length)
+function getNextCommercialNumber($length = 3)
 {
     $number = '';
     do {
@@ -1679,7 +1680,7 @@ function getNextCommercialNumber($length)
     return $main;
 }
 
-function getNextbasicNumber($length)
+function getNextbasicNumber($length = 3)
 {
     $number = '';
     do {

@@ -426,18 +426,20 @@
 											
                                             </div>
                                         </div>
-										<!--<div class="form-group col-sm-4">-->
-          <!--                                  <label><span style="color:red;font-size: 20px;">*</span>Residential Subtype</label>-->
-          <!--                                  <select name="residentialsubtype" class="form-select" required="">-->
-          <!--                                       <option value="">Select...</option>-->
-          <!--                                       <option value="Apartment" {{ $prodata->residentialsubtype == 'Apartment' ? 'selected':'' }}>Apartment</option>-->
-          <!--                                       <option value="Gated Apartment" {{ $prodata->residentialsubtype == 'Gated Apartment' ? 'selected':'' }}>Gated Apartment</option>-->
-          <!--                                       <option value="Hotel" {{ $prodata->residentialsubtype == 'Hotel' ? 'selected':'' }}>Hotel</option>-->
-          <!--                                       <option value="Independent House" {{ $prodata->residentialsubtype == 'Independent House' ? 'selected':'' }}>Independent House</option>-->
-          <!--                                       <option value="Land" {{ $prodata->residentialsubtype == 'Land' ? 'selected':'' }}>Land</option>-->
-          <!--                                       <option value="Villa" {{ $prodata->residentialsubtype == 'Villa' ? 'selected':'' }}>Villa</option>-->
-          <!--                                   </select>-->
-          <!--                              </div>-->
+									<div class="form-group col-sm-4">
+                                     <label><span style="color:red;font-size: 20px;">*</span>Residential Subtype</label>
+                                     @php
+                                     $subtypes = DB::table('tblsubcategory')->where('categoryid','1')->where('deleted_at', NULL)->get()
+                                    @endphp
+                                           <select name="residentialsubtype" class="form-select" required="">
+                                              <option value="">Select...</option>
+                                                @foreach ($subtypes as $subtype)
+                                                <option value="{{ $subtype->id }}" {{ $prodata->subcategoryid == $subtype->id ? 'selected' : '' }}>{{ $subtype->subcategoryname }}</option>
+                                                @endforeach
+                                           </select>
+
+                                           {{-- @dd($prodata->subcategoryname) --}}
+                                    </div>
 										<div class="form-group col-sm-4">
                                             <label><span style="color:red;font-size: 20px;">*</span>Residential Furinished</label>
                                             <select name="residentialfurinished" class="form-select" required="">

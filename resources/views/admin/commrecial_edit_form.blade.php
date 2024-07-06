@@ -418,18 +418,19 @@
 											
                                             </div>
                                         </div>
-										<!--<div class="form-group col-sm-4">-->
-          <!--                                  <label><span style="color:red;font-size: 20px;">*</span>Commrecial Subtype</label>-->
-          <!--                                  <select name="commercialsubtype" class="form-select" required="">-->
-          <!--                                       <option value="">Select...</option>-->
-          <!--                                       <option value="Godown" {{ $prodata->commercialsubtype == 'Godown' ? 'selected':'' }}>Godown</option>-->
-          <!--                                       <option value="Land" {{ $prodata->commercialsubtype == 'Land' ? 'selected':'' }}>Land</option>-->
-          <!--                                       <option value="Office" {{ $prodata->commercialsubtype == 'Office' ? 'selected':'' }}>Office</option>-->
-          <!--                                       <option value="Retial" {{ $prodata->commercialsubtype == 'Retial' ? 'selected':'' }}>Retial</option>-->
-          <!--                                       <option value="Shop" {{ $prodata->commercialsubtype == 'Shop' ? 'selected':'' }}>Shop</option>-->
-          <!--                                       <option value="Warehouse" {{ $prodata->commercialsubtype == 'Warehouse' ? 'selected':'' }}>Warehouse</option>-->
-          <!--                                   </select>-->
-          <!--                              </div>-->
+										<div class="form-group col-sm-4">
+                                           <label><span style="color:red;font-size: 20px;">*</span>Commrecial Subtype</label>
+                                           @php
+                                           $subtypes = DB::table('tblsubcategory')->where('categoryid','2')->where('deleted_at', NULL)->get()
+                                          @endphp
+                                        
+                                        <select name="commercialsubtype" class="form-select" required="">
+                                                <option value="">Select...</option>
+                                                @foreach ($subtypes as $subtype)
+                                                <option value="{{ $subtype->id }}" {{ $prodata->subcategoryid == $subtype->id ? 'selected' : '' }}>{{ $subtype->subcategoryname }}</option>
+                                                @endforeach
+                                        </select>
+                                       </div>
 										<div class="form-group col-sm-4">
                                             <label><span style="color:red;font-size: 20px;">*</span>Commrecial Furinished</label>
                                             <select name="commercialfurinished" class="form-select" required="">

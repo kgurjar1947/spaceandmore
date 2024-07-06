@@ -726,6 +726,7 @@
                             <div class="author pull-left">
 
 
+
                                 <figure class="author-thumb"><img src="webassets/images/map.png" alt=""></figure>
                                 <h6>{{ get_city_name($row->location) }}</h6>
                             </div>
@@ -734,7 +735,7 @@
                         </div>
                         <div class="title-text">
                             <h4><a href="residential_details/{{ $row->id}}">(<?php echo $row['propertyid']; ?>) {{ $row->propertyname}} <br>
-                                    {{ $row->pricepersft}} Sq.Ft, {{get_sub_cat_name($row->subcategoryid)}} <br /></a>
+                                    {{ $row->builtuparea}} Built Up Area, {{get_sub_cat_name($row->subcategoryid)}} <br /></a>
                             </h4>
                         </div>
                         <div class="price-box clearfix">
@@ -778,7 +779,7 @@
                         </div>
                         <div class="title-text">
                             <h4><a href="commercial_details/{{ $row->id}}">(<?php echo $row['propertyid']; ?>)  {{ $row->propertyname}} <br>
-                                    {{ $row->pricepersft}} Sq.Ft, {{get_sub_cat_name($row->subcategoryid)}} <br /></a>
+                                    {{ $row->builtuparea}} Built Up Area, {{get_sub_cat_name($row->subcategoryid)}} <br /></a>
                             </h4>
                         </div>
                         <div class="price-box clearfix">

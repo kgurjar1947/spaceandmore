@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="buy-btn pull-right"><a href="{{url('/')}}/{{$recolink}}/{{ $row->id}}"><?php echo $row['leadtype']; ?></a></div>
                                     </div>
-                                    <div class="title-text"><h4><a href="{{url('/')}}/{{$recolink}}/{{ $row->id}}">{{ $row->propertyname}} <br>{{ $row->pricepersft}} Sq.Ft, {{get_sub_cat_name($row->subcategoryid)}} <br/><?php echo $row['propertyid']; ?></a></h4></div>
+                                    <div class="title-text"><h4><a href="{{url('/')}}/{{$recolink}}/{{ $row->id}}">{{ $row->propertyname}} <br>{{ $row->builtuparea}} Built Up Area, {{get_sub_cat_name($row->subcategoryid)}} <br/><?php echo $row['propertyid']; ?></a></h4></div>
                                     <div class="price-box clearfix">
                                         <div class="price-info pull-left">
                                             <h6>Start From</h6>
