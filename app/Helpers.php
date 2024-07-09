@@ -34,6 +34,28 @@ function get_cat_name($cat_id){
     return $cate_name ?? '';
 }
 
+function get_enable_disable($enable_disable){
+    if($enable_disable == 0){
+        $enable_disable_name = 'Disabled';
+    }elseif($enable_disable == 1){
+        $enable_disable_name = 'Enabled';
+    }else{
+
+    }
+    return $enable_disable_name ?? '';
+}
+
+function get_hot($hot){
+    if($hot == 0){
+        $hot_name = 'NO';
+    }elseif($hot == 1){
+        $hot_name = 'YES';
+    }else{
+        
+    }
+    return $hot_name ?? '';
+}
+
 function get_sub_cat_name($cat_sub_id){
     $cat_sub_name = SubCategoryModel::where('id',$cat_sub_id)->pluck('subcategoryname')->first();
     return $cat_sub_name ?? '';

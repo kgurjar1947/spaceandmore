@@ -37,7 +37,7 @@ class CSVController extends Controller {
                 "Expires"             => "0"
             );
            if($id == 2){
-           $columns = array('Property Type','Property Subtype','Property Name','Property ID', 'Executive Name', 'Data Provided Date', 'Owner Name', 'Owner Number', 'Contact Two', 'Email', 'Supervisor Name', 'Supervisor Contact', 'Source', 
+           $columns = array('Property Type','Property Subtype','Property Name','Property ID', 'Enable/Disable Status','Hot Property','Executive Name', 'Data Provided Date', 'Owner Name', 'Owner Number', 'Contact Two', 'Email', 'Supervisor Name', 'Supervisor Contact', 'Source', 
            'Description', 'Lead Type', 'Service Charge', 'S&M Property', 'Location', 'Building Name', 'Unit', 'Landmark', 'Total Price', 'Price Per Sft', 'Maintenance', 'Deposit', 
            'Lockin', 'Built Up Area', 'Available From','Available Date', 'DG Backup', 'AC', 'Floor', 'Total Floors', 'No.of Car Parking', 'Lift', 'Security', 'Onsite Manager', 'Bath Rooms', 'Age', 'Plot Area', 'Carpet Area', 'Property Facing',
            'Keys Available',  'Suitable For', 'Commercial Furinished', 'Other Community', 'No.of work stations', 'No.of Manager Cabins', 'No.of Dicussion Rooms', 'No.of Conference Room', 'Boardroom (Capacity)',
@@ -49,6 +49,8 @@ class CSVController extends Controller {
                     $row['categoryid']  = get_cat_name($task['categoryid']);
                     $row['subcategoryid']  = get_sub_cat_name($task['subcategoryid']);
                     $row['propertyname']  = $task['propertyname'];
+                    $row['Enable/Disable Status']  = get_enable_disable($task['status']);
+                    $row['Hot Property']  = get_hot($task['favourites']);
                     $row['propertyid']  = $task['propertyid'];
                     $row['executivename']  = $task['executivename'];
                     $row['date']  = $task['date'];
@@ -109,7 +111,7 @@ class CSVController extends Controller {
                     $row['landmark_gps']  = $task['landmark_gps'];
                     $row['video_url']  = $task['video_url'];
                     
-                    fputcsv($file, array($row['categoryid'],$row['subcategoryid'],$row['propertyname'],$row['propertyid'], $row['executivename'], $row['date'], $row['ownername'], $row['ownernumber'], 
+                    fputcsv($file, array($row['categoryid'],$row['subcategoryid'],$row['propertyname'],$row['propertyid'],$row['Enable/Disable Status'],$row['Hot Property'], $row['executivename'], $row['date'], $row['ownername'], $row['ownernumber'], 
                     $row['contact_two'], $row['email'], $row['supervisorname'], $row['supervisornumber'], $row['source'], $row['description'], $row['leadtype'],
                     $row['servicecharge'], $row['smproperty'], $row['location'], $row['building_name'], $row['unit'], $row['landmark'], $row['totalprice'], $row['pricepersft'], $row['maintenance'],
                     $row['deposit'], $row['lockin'], $row['builtuparea'], $row['availablefrom'], $row['availabledate'], $row['dgbackup'], $row['ac'], $row['floor'], $row['totalfloors'], $row['carparking'],
@@ -121,7 +123,7 @@ class CSVController extends Controller {
             }; 
                
            }else{
-           $columns = array('Property Type','Property Subtype','Property Name','Property ID', 'Executive Name', 'Data Provided Date', 'Owner Name', 'Owner Number', 'Contact Two', 'Email', 'Supervisor Name', 'Supervisor Contact', 'Source', 
+           $columns = array('Property Type','Property Subtype','Property Name','Property ID','Enable/Disable Status','Hot Property', 'Executive Name', 'Data Provided Date', 'Owner Name', 'Owner Number', 'Contact Two', 'Email', 'Supervisor Name', 'Supervisor Contact', 'Source', 
            'Description', 'Lead Type', 'Service Charge', 'S&M Property', 'Location', 'Building Name', 'Unit', 'Landmark', 'Total Price', 'Price Per Sft', 'Maintenance', 'Deposit', 
            'Lockin', 'Built Up Area', 'Available From','Available Date', 'DG Backup', 'AC', 'Floor', 'Total Floors', 'No.of Car Parking', 'Lift', 'Security', 'Onsite Manager', 'Bath Rooms', 'Age', 'Plot Area', 'Carpet Area', 'Property Facing',
            'Keys Available', 'Suitable For', 'Residential Furinished', 'Other Community', 'communitydetails', 'Geysers', 'Wardrobes', 'Bachelors', 'Clinic', 'Servant Room', 'Pets Allowed', 'Club House', 'Duplex', 'Pool',
@@ -134,6 +136,8 @@ class CSVController extends Controller {
                      $row['categoryid']  = get_cat_name($task['categoryid']);
                     $row['subcategoryid']  = get_sub_cat_name($task['subcategoryid']);
                     $row['propertyname']  = $task['propertyname'];
+                    $row['Enable/Disable Status']  = get_enable_disable($task['status']);
+                    $row['Hot Property']  = get_hot($task['favourites']);
                     $row['propertyid']  = $task['propertyid'];
                     $row['executivename']  = $task['executivename'];
                     $row['date']  = $task['date'];
@@ -195,7 +199,7 @@ class CSVController extends Controller {
                     $row['landmark_gps']  = $task['landmark_gps'];
                     $row['video_url']  = $task['video_url'];
                     
-                    fputcsv($file, array($row['categoryid'],$row['subcategoryid'],$row['propertyname'],$row['propertyid'], $row['executivename'], $row['date'], $row['ownername'], $row['ownernumber'], 
+                    fputcsv($file, array($row['categoryid'],$row['subcategoryid'],$row['propertyname'],$row['propertyid'], $row['Enable/Disable Status'],$row['Hot Property'],$row['executivename'], $row['date'], $row['ownername'], $row['ownernumber'], 
                     $row['contact_two'], $row['email'], $row['supervisorname'], $row['supervisornumber'], $row['source'], $row['description'], $row['leadtype'],
                     $row['servicecharge'], $row['smproperty'], $row['location'], $row['building_name'], $row['unit'], $row['landmark'], $row['totalprice'], $row['pricepersft'], $row['maintenance'],
                     $row['deposit'], $row['lockin'], $row['builtuparea'], $row['availablefrom'], $row['availabledate'], $row['dgbackup'], $row['ac'], $row['floor'], $row['totalfloors'], $row['carparking'],
