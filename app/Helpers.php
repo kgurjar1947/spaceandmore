@@ -55,6 +55,15 @@ function get_hot($hot){
     }
     return $hot_name ?? '';
 }
+function get_approval($approval){
+    if($approval == 1){
+        $approval_name = 'approved';
+    }else{
+        $approval_name = 'waiting for approval';
+    }
+    return $approval_name ?? '';
+}
+
 
 function get_sub_cat_name($cat_sub_id){
     $cat_sub_name = SubCategoryModel::where('id',$cat_sub_id)->pluck('subcategoryname')->first();
