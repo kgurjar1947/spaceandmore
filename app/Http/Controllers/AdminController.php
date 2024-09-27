@@ -775,9 +775,12 @@ public function delete_sub_restore(Request $request,$id){
     $propertym->dateinend = $request->dateinend;   
     $propertym->amenities = implode(',', $request->amenities);
     $propertym->locations = $request->locations;
-    $propertym->proimages = implode(', ',$uploadedImagePaths);
+    if(!empty($request->file('proimages'))){
+        $propertym->proimages = implode(', ',$uploadedImagePaths);
+    }
+     if(!empty($request->file('file'))){
     $propertym->file = implode(', ', $uploadedImagePathsPlan);
-    
+     }
     if($propertym->save()){
         return response()->json([
             "status"=>1,"message" => "Property Added Successfully!."
@@ -814,23 +817,39 @@ public function delete_sub_restore(Request $request,$id){
             $cate_name = CommercialModel::where('id',$request->id)->pluck('proimages')->first();
             $propertym->proimages = $proimages.', '.$cate_name;
         }}
-        if(!empty($request->hasFile('file'))){
+
+        // 
         if($request->hasFile('file')){
-        $uploadedImagePathsPlan = [];
-        // Loop through each uploaded file
-        foreach ($request->file('file') as $image2) {
-            // Generate a unique file name
-            $imageName2 = time() . '_' . $image2->getClientOriginalName();
-            $image2->move($storagePath, $imageName2);
-            $uploadedImagePathsPlan[] = 'uploads/' . $imageName2;
-        }
-        //$propertym->file = implode(', ', $uploadedImagePathsPlan);
-        $propertymfile = implode(', ', $uploadedImagePathsPlan);
-        $cate_namefile = CommercialModel::where('id',$request->id)->pluck('file')->first();
-        $propertym->file = $propertymfile.', '.$cate_namefile;
-        }}else{
-            $propertym->file = NULL;
-        }
+            $uploadedImagePathsPlan = [];
+            // Loop through each uploaded file
+            foreach ($request->file('file') as $image2) {
+                // Generate a unique file name
+                $imageName2 = time() . '_' . $image2->getClientOriginalName();
+                $image2->move($storagePath, $imageName2);
+                $uploadedImagePathsPlan[] = 'uploads/' . $imageName2;
+            }
+            $propertymfile = implode(', ', $uploadedImagePathsPlan);
+            $cate_namefile = PropertyModel::where('id',$request->id)->pluck('file')->first();
+            $propertym->file = $propertymfile.', '.$cate_namefile;
+            }
+        // 
+        // if(!empty($request->hasFile('file'))){
+        // if($request->hasFile('file')){
+        // $uploadedImagePathsPlan = [];
+        // // Loop through each uploaded file
+        // foreach ($request->file('file') as $image2) {
+        //     // Generate a unique file name
+        //     $imageName2 = time() . '_' . $image2->getClientOriginalName();
+        //     $image2->move($storagePath, $imageName2);
+        //     $uploadedImagePathsPlan[] = 'uploads/' . $imageName2;
+        // }
+        // //$propertym->file = implode(', ', $uploadedImagePathsPlan);
+        // $propertymfile = implode(', ', $uploadedImagePathsPlan);
+        // $cate_namefile = CommercialModel::where('id',$request->id)->pluck('file')->first();
+        // $propertym->file = $propertymfile.', '.$cate_namefile;
+        // }}else{
+        //     $propertym->file = NULL;
+        // }
         
         $propertym->propertyname = $request->propertyname;
         $propertym->propertyid = $request->propertyid;
