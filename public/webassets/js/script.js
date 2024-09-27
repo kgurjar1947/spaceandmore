@@ -501,9 +501,9 @@
 	if($('.price-range-slider').length){
 		$( ".price-range-slider" ).slider({
 			range: true,
-			min: 20000,
+			min: 5000,
 			max: 100000000,
-			values: [ 20000, 100000000 ],
+			values: [ 5000, 100000000 ],
 			slide: function( event, ui ) {
 			$( "input.property-amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
 			}
